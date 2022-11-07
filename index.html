@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        background: #3a3a3a;
+        display: block;
+    }
+
+    #grad{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 3rem auto;
+        height: 300px;
+        width: 300px;
+        background: #fff;
+    }
+
+    .btn{
+        margin-top: 2rem;
+        text-align: center;
+    }
+
+    .btn button{
+        background: darkred;
+        border: none;
+        padding: 0.7rem;
+        color: #fff;
+        box-shadow: 0 3px 8px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    .btn button:hover{
+        opacity: 0.8;
+    }
+
+    .style{
+        height: 3rem;
+        width: 500px;
+        text-align: center;
+        margin: 0 auto;
+        padding-top: 1.5rem;
+        background: #000;
+        color:#fff;
+    }
+</style>
+<body>
+    <div id="grad">
+        <div>generate linear gradient</div>
+    </div>
+    <div id="style" class="style">css</div>
+    <div class="btn">
+        <button onclick="genGradient()">generate</button>
+    </div>
+</body>
+<script>
+function genGradient(){
+	var directions = ['to right','to left','to bottom','to bottom right','to bottom left']
+	var rand = Math.floor(Math.random() * 5);
+    var randDirec = directions[rand];
+	var colr1 = '#'+genStr();
+    var colr2 = '#'+genStr();
+    const div = document.getElementById('grad');
+    const text = document.getElementById('style');
+    div.style.backgroundImage = 'linear-gradient('+randDirec+', '+colr1+', '+colr2+')';
+    
+    text.innerHTML = 'background-image: linear-gradient( '+ randDirec+', '+ colr1 + ', ' + colr2+' )';
+    
+}
+
+function genStr(){
+	const code = 'ABCDEF0123456789';
+    var result = '';
+    for( let i = 0 ; i < 6; i++){
+   		 result += code.charAt(Math.floor(Math.random() * code.length));
+    }
+    return result;
+}
+</script>
+</html>
